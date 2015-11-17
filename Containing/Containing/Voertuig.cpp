@@ -4,6 +4,8 @@
 
 Voertuig::Voertuig(string id, string type, double snelheidLeeg, double snelheidBeladen, double startLocatieX, double startLocatieY, double startLocatieZ, vector<Container> containerList, string bestemming, bool isWachtend, int maxCapaciteit)
 {
+	// het kan zijn dat dit hele stuk bij alle klassen moet staan die van Voertuig erven 
+	// en dat het in deze klasse zelf leeg is, ben ik nog niet zeker over
 	Id = id;
 	Type = type;
 	SnelheidLeeg = snelheidLeeg;
@@ -23,40 +25,28 @@ Voertuig::Voertuig(string id, string type, double snelheidLeeg, double snelheidB
 
 void Voertuig::Verplaats(double x, double y, double z)
 {
+	//!!! Deze functie is nu virtual abstract wat inhoud dat zijn functionaliteit van de klasse afhangt die hem erft !!!
 	//dit is puur speculatie aangezien deze functies nog niet gemaakt zijn of er is nog niet bekend hoe deze gaan werken
 	//bedoeling is dat Verplaats() het voertuig met of zonder container verplaats via de kortste route naar zijn bestemming
-	
-	KortsteRoute(StartLocatieX, StartLocatieY, StartLocatieZ, x, y, z);
 }
 
 void Voertuig::Inladen()
 {
+	//!!! Deze functie is nu virtual abstract wat inhoud dat zijn functionaliteit van de klasse afhangt die hem erft !!!
 	//dit is puur speculatie aangezien deze functies nog niet gemaakt zijn of er is nog niet bekend hoe deze gaan werken
 	//bedoeling is dat Inladen() wacht tot het voertuig ingeladen is
-	
-	while(IsWachtend == true)
-	{
-		if(ContainerList.size == MaxCapaciteit)
-		{
-			IsWachtend = false;
-		}
-	}
 }
 
 void Voertuig::Uitladen(vector<string> containerIdList)
 {
+	//!!! Deze functie is nu virtual abstract wat inhoud dat zijn functionaliteit van de klasse afhangt die hem erft !!!
 	//dit is puur speculatie aangezien deze functies nog niet gemaakt zijn of er is nog niet bekend hoe deze gaan werken
 	//bedoeling is dat Uitladen() de container(s) afgeeft aan een ander voertuig
-
-	while(ContainerList.size != 0)
-	{
-		IsWachtend = true;
-	}
-	IsWachtend = false;
 }
 
 
 Voertuig::~Voertuig()
 {
+	//!!! kan zijn dat Voertuig een lege deconstructor krijgt omdat ie virtual is, weet niet zeker !!!
 	//geen idee hoe deconstructors werken, later toevoegen
 }

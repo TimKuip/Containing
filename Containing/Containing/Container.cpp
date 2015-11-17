@@ -29,10 +29,6 @@ Container::Container(string aankomstDatum, double aankomstTijd, double uitlaadTi
 	InhoudSoort = inhoudSoort;
 	Gevaar = gevaar;
 	ISO = ISO;
-
-
-
-
 }
 
 

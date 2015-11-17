@@ -20,9 +20,11 @@ private:
 
 public:
 	Voertuig(string id, string type, double snelheidLeeg, double snelheidBeladen, double startLocatieX, double startLocatieY, double startLocatieZ, vector<Container> containerList, string bestemming, bool isWachtend, int maxCapaciteit);
-	void Verplaats(double x, double y, double z);
-	void Inladen();
-	void Uitladen(vector<string> containerIdList);
-	~Voertuig();
+	// ik heb de functies virtual abstract gemaakt. dit houd in dat ze geen functionaliteit hebben in de Ouderklasse
+	//maar elke kind klasse die hier van erft kan er zijn eigen functionaliteit geven
+	virtual void Verplaats(double x, double y, double z)=0;
+	virtual void Inladen()=0;
+	virtual void Uitladen(vector<string> containerIdList)=0;
+	virtual~Voertuig();
 };
 
