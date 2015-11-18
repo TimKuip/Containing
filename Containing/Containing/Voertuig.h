@@ -4,8 +4,9 @@
 using namespace std;
 
 class Voertuig
-{
-private:
+{	
+
+public:
 	string Id;
 	string Type;
 	double SnelheidLeeg;
@@ -17,8 +18,7 @@ private:
 	string Bestemming;
 	bool IsWachtend;
 	int MaxCapaciteit;
-
-public:
+	
 	Voertuig(string id, string type, double snelheidLeeg, double snelheidBeladen, double startLocatieX, double startLocatieY, double startLocatieZ, vector<Container> containerList, string bestemming, bool isWachtend, int maxCapaciteit);
 	// ik heb de functies virtual abstract gemaakt. dit houd in dat ze geen functionaliteit hebben in de Ouderklasse
 	//maar elke kind klasse die hier van erft kan er zijn eigen functionaliteit geven

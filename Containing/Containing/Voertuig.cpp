@@ -1,11 +1,9 @@
-#include "stdafx.h"
+#include "Supercontroller.h"
 #include "Voertuig.h"
 
 
 Voertuig::Voertuig(string id, string type, double snelheidLeeg, double snelheidBeladen, double startLocatieX, double startLocatieY, double startLocatieZ, vector<Container> containerList, string bestemming, bool isWachtend, int maxCapaciteit)
 {
-	// het kan zijn dat dit hele stuk bij alle klassen moet staan die van Voertuig erven 
-	// en dat het in deze klasse zelf leeg is, ben ik nog niet zeker over
 	Id = id;
 	Type = type;
 	SnelheidLeeg = snelheidLeeg;
