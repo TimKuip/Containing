@@ -1,11 +1,8 @@
 #include "stdafx.h"
 #include "Afstandberekenaar.h"
 
-Afstandberekenaar::Afstandberekenaar(string plaats1, string plaats2)
+Afstandberekenaar::Afstandberekenaar()
 {
-	//inlezen locaties en de routes
-	KortsteRoute();
-	Route(plaats1, plaats2);
 }
 
 int Afstandberekenaar::Afstand(string plaats1, string plaats2) 
@@ -24,7 +21,7 @@ string Afstandberekenaar::Route(string plaats1, string plaats2)
 	return ret;
 }
 
-void Afstandberekenaar::KortsteRoute()
+string Afstandberekenaar::KortsteRoute(string plaats1, string plaats2)
 {
 	for (auto k : plaatsen) {
 		for (auto i : plaatsen) {
@@ -43,6 +40,7 @@ void Afstandberekenaar::KortsteRoute()
 			}
 		}
 	}
+	return Route(plaats1, plaats2);
 }
 
 

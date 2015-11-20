@@ -16,10 +16,10 @@ private:
 	map<pair<string, string>, int> afstanden;
 	map<pair<string, string>, string> kortsteroutes;
 public:
-	Afstandberekenaar(string plaats1, string plaats2);
+	Afstandberekenaar();
 	int Afstand(string plaats1, string plaats2);
 	string Route(string plaats1, string plaats2);
-	void KortsteRoute();
+	string KortsteRoute(string plaats1, string plaats2);
 	~Afstandberekenaar();
 
 };
