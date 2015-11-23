@@ -10,7 +10,7 @@
 #include <vector>
 using namespace std;
 
-//test
+
 
 class KortstePad
 {
