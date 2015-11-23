@@ -18,10 +18,7 @@ private:
 	
 
 public:
-	KortstePad() {
-		//inlezen locaties en de routes
-		kortsteroute();
-	}
+	
 
 	
 
