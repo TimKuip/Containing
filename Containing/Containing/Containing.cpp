@@ -12,20 +12,7 @@ using namespace std;
 
 
 
-class KortstePad
-{
-private:
-	
 
-public:
-	
-
-	
-
-	
-
-	
-};
 
 
 
