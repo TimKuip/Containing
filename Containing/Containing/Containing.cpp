@@ -28,15 +28,7 @@ public:
 
 	}
 
-	string route(string plaats1, string plaats2) {
-		string ret;
-		string snelsteRoute = kortsteroutes[{plaats1, plaats2}];
-		if (snelsteRoute == "")
-			ret += (plaats1 + " > " + plaats2);
-		else
-			ret += (plaats1 + snelsteRoute + plaats2);
-		return ret;
-	}
+	
 
 	
 };
