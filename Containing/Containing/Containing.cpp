@@ -15,10 +15,7 @@ using namespace std;
 class KortstePad
 {
 private:
-	const int verweg = 1000000;
-	vector<string> plaatsen;
-	map<pair<string, string>, int> afstanden;
-	map<pair<string, string>, string> kortsteroutes;
+	
 
 public:
 	KortstePad() {
@@ -62,12 +59,6 @@ public:
 	}
 };
 
-string vraag(string prompt) {
-	cout << prompt << endl;
-	string p3;
-	cin >> p3;
-	return p3;
-}
 
 
 
