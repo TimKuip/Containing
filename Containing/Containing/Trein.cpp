@@ -5,8 +5,9 @@ Trein::Trein(string id, string type, double snelheidLeeg, double snelheidBeladen
 {
 }
 
-void Trein::Verplaats(double x, double y, double z)
+void Trein::Verplaats(string start,string einde)
 {
+	ab.KortsteRoute(start, einde);
 }
 
 void Trein::Inladen()

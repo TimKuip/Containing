@@ -8,10 +8,9 @@ Vrachtwagen::Vrachtwagen(string id, string type, double snelheidLeeg, double sne
 	//volgens dick hoeven hier geen declaraties van variabelen, Vrachtwagen kan gewoon de declaratie in Voertuig gebruiken
 }
 
-void Vrachtwagen::Verplaats(double x, double y, double z)
+void Vrachtwagen::Verplaats(string start, string einde)
 {
-	//again, allemaal theoretisch spul dat ik uit mijn duim zuich totdat ik echt weet wat ik allemaal in de functie wil
-	KorsteRoute(x, y, z);
+	ab.KortsteRoute(start, einde);
 }
 
 void Vrachtwagen::Inladen()

@@ -21,7 +21,7 @@ Voertuig::Voertuig(string id, string type, double snelheidLeeg, double snelheidB
 // !!! niet alle voertuigen zullen op dezelfde manier werken, iets om in het achterhoofd te houden !!!
 
 
-void Voertuig::Verplaats(double x, double y, double z)
+void Voertuig::Verplaats(string start, string einde)
 {
 	//!!! Deze functie is nu virtual abstract wat inhoud dat zijn functionaliteit van de klasse afhangt die hem erft !!!
 	//dit is puur speculatie aangezien deze functies nog niet gemaakt zijn of er is nog niet bekend hoe deze gaan werken

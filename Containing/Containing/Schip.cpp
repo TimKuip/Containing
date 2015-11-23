@@ -5,8 +5,9 @@ Schip::Schip(string id, string type, double snelheidLeeg, double snelheidBeladen
 {
 }
 
-void Schip::Verplaats(double x, double y, double z)
+void Schip::Verplaats(string start,string einde)
 {
+	ab.KortsteRoute(start, einde);
 }
 
 void Schip::Inladen()
