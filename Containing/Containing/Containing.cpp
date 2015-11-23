@@ -38,25 +38,7 @@ public:
 		return ret;
 	}
 
-	void kortsteroute() {
-		for (auto k : plaatsen) {
-			for (auto i : plaatsen) {
-				for (auto j : plaatsen) {
-					if (afstanden[{i, k}] + afstanden[{k, j}] < afstanden[{i, j}]) {
-						afstanden[{i, j}] = afstanden[{i, k}] + afstanden[{k, j}];
-						//plaats1 == i;
-						//plaats2 == j;
-						if (kortsteroutes[{i, k}] == "" && kortsteroutes[{k, j}] == "")
-							kortsteroutes[{i, j}] = " > " + k + " > ";
-						else if (kortsteroutes[{i, k}] == "")
-							kortsteroutes[{i, j}] = " > " + k + " > " + kortsteroutes[{k, j}] + " > ";
-						else if (kortsteroutes[{k, j}] == "")
-							kortsteroutes[{i, j}] = " > " + kortsteroutes[{i, k}] + " > " + k + " > ";
-					}
-				}
-			}
-		}
-	}
+	
 };
 
 
