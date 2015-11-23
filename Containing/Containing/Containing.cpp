@@ -69,14 +69,5 @@ string vraag(string prompt) {
 	return p3;
 }
 
-int _tmain()
-{
-	KortstePad kp;
-	string plaats1 = vraag("plaats1 = ");
-	string plaats2 = vraag("plaats2 = ");
-	cout << "de afstand is " << kp.afstand(plaats1, plaats2) << endl;
-	cout << "via de route: " << kp.route(plaats1, plaats2) << endl;
-	int x = 0;
-	cin >> x;
-};
+
 
