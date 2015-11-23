@@ -23,10 +23,7 @@ public:
 		kortsteroute();
 	}
 
-	int afstand(string plaats1, string plaats2) {
-		return afstanden[{plaats1, plaats2}];
-
-	}
+	
 
 	
 
