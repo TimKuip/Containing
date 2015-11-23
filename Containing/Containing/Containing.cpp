@@ -14,13 +14,27 @@
 #include <vector>
 using namespace std;
 
-class Containing
+class Controller
 {
-	
+public:
+	string xmlfilename;
+	XMLlezer xmllezer;
+	Afstandberekenaar afstandberekenaar;
+	Avg avg;
+	Trein trein;
+	Schip schip;
+	Vrachtwagen vrachtwagen;
+	Kraan kraan;
+	Container container;
+
+	void Start(string xmlfilename);
 };
 
+void Controller::Start(string xmlfilename)
+{
+}
 
+int Main()
+{
 
-
-
-
+}
