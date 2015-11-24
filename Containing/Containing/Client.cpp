@@ -59,7 +59,7 @@ public:
 int main()
 {
 	initSockets();
-	Client* client = new Client(50007);
+	Client* client = new Client(50009);
 	string name = client->conversation("Name = ");
 	for (;;)
 	{
