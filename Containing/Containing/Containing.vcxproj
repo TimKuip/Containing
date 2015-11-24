@@ -104,6 +104,7 @@
     <ClCompile Include="Trein.cpp" />
     <ClCompile Include="Voertuig.cpp" />
     <ClCompile Include="Vrachtwagen.cpp" />
+    <ClCompile Include="XMLreader.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

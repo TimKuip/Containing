@@ -10,6 +10,13 @@
 #include <stdio.h>
 #include <tchar.h>
 
+class XMLReader
+{
+public:
+	XMLReader();
+	~XMLReader();
+};
+
 
 
 // TODO: reference additional headers your program requires here
