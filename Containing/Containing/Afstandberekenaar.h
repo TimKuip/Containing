@@ -12,7 +12,7 @@ class Afstandberekenaar
 {
 private:
 	const int verweg = 1000000;
-	vector<string> plaatsen;
+	vector<string> plaatsen{"kraan","boot","opslag"};
 	map<pair<string, string>, int> afstanden;
 	map<pair<string, string>, string> kortsteroutes;
 public:

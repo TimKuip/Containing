@@ -3,6 +3,12 @@
 
 Afstandberekenaar::Afstandberekenaar()
 {
+	afstanden.insert(pair<pair<string, string>, int>(pair<string, string>("kraan", "opslag"), 10));
+	afstanden.insert(pair<pair<string, string>, int>(pair<string, string>("kraan", "boot"), 5));
+	afstanden.insert(pair<pair<string, string>, int>(pair<string, string>("opslag", "boot"), 20));
+	afstanden.insert(pair<pair<string, string>, int>(pair<string, string>("opslag", "kraan"), 10));
+	afstanden.insert(pair<pair<string, string>, int>(pair<string, string>("boot", "kraan"), 5));
+	afstanden.insert(pair<pair<string, string>, int>(pair<string, string>("boot", "opslag"), 20));
 }
 
 int Afstandberekenaar::Afstand(string plaats1, string plaats2) 

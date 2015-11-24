@@ -4,6 +4,7 @@
 #include "Voertuig.h"
 #include "Schip.h"
 #include "Trein.h"
+#include "Container.h"
 #include "Vrachtwagen.h"
 #include "stdafx.h"
 #include <iostream>
@@ -14,27 +15,9 @@
 #include <vector>
 using namespace std;
 
-class Controller
+
+int main()
 {
-public:
-	string xmlfilename;
-	XMLlezer xmllezer;
-	Afstandberekenaar afstandberekenaar;
-	Avg avg;
-	Trein trein;
-	Schip schip;
-	Vrachtwagen vrachtwagen;
-	Kraan kraan;
-	Container container;
-
-	void Start(string xmlfilename);
-};
-
-void Controller::Start(string xmlfilename)
-{
-}
-
-int Main()
-{
-
+	Afstandberekenaar ab;
+	ab.KortsteRoute("kraan", "boot");
 }
