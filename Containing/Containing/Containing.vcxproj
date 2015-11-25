@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Afstandberekenaar.h" />
+    <ClInclude Include="Client.h" />
     <ClInclude Include="Container.h" />
     <ClInclude Include="Schip.h" />
     <ClInclude Include="sockets.h" />

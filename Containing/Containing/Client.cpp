@@ -5,24 +5,10 @@
 // adapted for windows 09/10/2015
 // Messaging Client
 
+#include "Client.h"
 #include "stdafx.h"
-#include "sockets.h"
-#include <string>
-#include <iostream>
-#include <algorithm>
-#include <thread>
 
-using namespace std;
-
-class Client
-{
-private:
-	ClientSocket socket;
-	thread* th;
-	bool stopped;
-
-public:
-	Client(int port) : socket("127.0.0.1", port)
+	Client::Client(int port) : socket("127.0.0.1", port)
 	{
 		stopped = false;
 		th = new thread([this]()
@@ -35,14 +21,14 @@ public:
 		});
 	}
 
-	~Client()
+	Client::~Client()
 	{
 		stopped = true;
 		th->join();
 		delete th;
 	}
 
-	string conversation(string prompt)
+	string Client::conversation(string prompt)
 	{
 		string text;
 		for (;;)
@@ -54,18 +40,6 @@ public:
 		socket.write(text);
 		return text;
 	}
-};
 
-int main()
-{
-	initSockets();
-	Client* client = new Client(50007);
-	string name = client->conversation("Name = ");
-	for (;;)
-	{
-		string text = client->conversation(name + "> ");
-		if (text == "halt") break;
-	}
-	delete client;
-	exitSockets();
-}
+
+
