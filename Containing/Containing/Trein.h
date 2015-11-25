@@ -2,6 +2,7 @@
 #include "Voertuig.h"
 #include "Afstandberekenaar.h"
 #include <string>
+
 using namespace std;
 
 class Trein :public Voertuig //trein is een voertuig

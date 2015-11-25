@@ -22,6 +22,7 @@ public:
 	{
 		load_xml(file, name);
 	}
+	~XMLlezen();
 	
 };
 
@@ -142,14 +143,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	return 0;
 }
 
-
-
-
-XMLReader::XMLReader()
-{
-}
-
-
-XMLReader::~XMLReader()
+XMLlezen::~XMLlezen()
 {
 }

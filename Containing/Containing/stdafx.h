@@ -10,12 +10,18 @@
 #include <stdio.h>
 #include <tchar.h>
 
-class XMLReader
-{
-public:
-	XMLReader();
-	~XMLReader();
-};
+#include "Afstandberekenaar.h"
+#include "Voertuig.h"
+#include "Schip.h"
+#include "Trein.h"
+#include "Container.h"
+#include "Vrachtwagen.h"
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <string>
+#include <map>
+#include <vector>
 
 
 
