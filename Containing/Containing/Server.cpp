@@ -5,6 +5,7 @@
 // adapted for windows 09/10/2015
 // Messaging Server
 
+#include "Server.h"
 #include "stdafx.h"
 #include "sockets.h"
 #include <vector>
