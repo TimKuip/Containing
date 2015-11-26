@@ -7,14 +7,6 @@
 
 #include "Server.h"
 #include "stdafx.h"
-#include "sockets.h"
-#include <vector>
-#include <string>
-#include <iostream>
-#include <thread>
-
-using namespace std;
-
 
 Server::Server(int port) : socket(port)
 {
