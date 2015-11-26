@@ -20,5 +20,15 @@ int main()
 		if (text == "halt") break;
 	}
 	delete client;
-	exitSockets();*/
+	exitSockets();
+
+	cout << "Accepting clients ...\n";
+	initSockets();
+	Server server(50007);
+	for (;;)
+	{
+		server.acceptClient();
+	}
+	exitSockets();
+	*/
 }
