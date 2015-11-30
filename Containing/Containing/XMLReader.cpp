@@ -17,13 +17,12 @@ class XMLlezen
 {
 public:
 	vector<string>load_xml(string file, string name);
-	
+
 	XMLlezen(string file, string name)
 	{
 		load_xml(file, name);
 	}
-	~XMLlezen();
-	
+
 };
 
 vector<string> XMLlezen::load_xml(string file, string name)
@@ -40,8 +39,11 @@ vector<string> XMLlezen::load_xml(string file, string name)
 	spXMLDoc.CreateInstance(__uuidof(MSXML2::DOMDocument60));
 	spXMLDoc->load(file.c_str());
 	MSXML2::IXMLDOMElementPtr spRoot = spXMLDoc->documentElement; //root node
-
-	if (spRoot->nodeName == (_bstr_t)"recordset")
+	if (spRoot == NULL)
+	{
+		cout << "no rootnode found";
+	}
+	else if (spRoot->nodeName == (_bstr_t)"recordset")
 	{
 		MSXML2::IXMLDOMNodeListPtr recordNodeList = spRoot->childNodes;
 		// traverse child's nodes
@@ -51,7 +53,6 @@ vector<string> XMLlezen::load_xml(string file, string name)
 			if (recordNode->nodeName == (_bstr_t)"record")
 			{
 				MSXML2::IXMLDOMNodeListPtr dataNodeList = recordNode->childNodes;
-				//name = (char *)spNode->Gettext(); 
 				for (long j = 0; j != dataNodeList->length; j++)
 				{
 					MSXML2::IXMLDOMNodePtr dataNode = dataNodeList->item[j];
@@ -74,13 +75,13 @@ vector<string> XMLlezen::load_xml(string file, string name)
 						cout << dataNode->selectSingleNode("positie")->selectSingleNode("y")->Gettext() << endl;
 						cout << dataNode->selectSingleNode("positie")->selectSingleNode("z")->Gettext() << endl;
 					}
-					if (dataNode->nodeName == (_bstr_t)"eigenaar")
+					else if (dataNode->nodeName == (_bstr_t)"eigenaar")
 					{
 						cout << endl << "eigenaar:" << endl;
 						cout << dataNode->selectSingleNode("naam")->Gettext() << endl;
 						cout << dataNode->selectSingleNode("containernr")->Gettext() << endl;
 					}
-					if (dataNode->nodeName == (_bstr_t)"vertrek")
+					else if (dataNode->nodeName == (_bstr_t)"vertrek")
 					{
 						cout << endl << "vertrek:" << endl;
 						vertrekdatum = dataNode->selectSingleNode("datum")->selectSingleNode("d")->Gettext() + "-";
@@ -95,39 +96,52 @@ vector<string> XMLlezen::load_xml(string file, string name)
 
 						cout << dataNode->selectSingleNode("bedrijf")->Gettext() << endl;
 					}
-					if (dataNode->nodeName == (_bstr_t)"afmetingen")
+					else if (dataNode->nodeName == (_bstr_t)"afmetingen")
 					{
 						cout << endl << "afmetingen:" << endl;
 						cout << dataNode->selectSingleNode("l")->Gettext() << endl;
 						cout << dataNode->selectSingleNode("b")->Gettext() << endl;
 						cout << dataNode->selectSingleNode("h")->Gettext() << endl;
 					}
-					if (dataNode->nodeName == (_bstr_t)"gewicht")
+					else if (dataNode->nodeName == (_bstr_t)"gewicht")
 					{
 						cout << endl << "gewicht:" << endl;
 						cout << dataNode->selectSingleNode("leeg")->Gettext() << endl;
 						cout << dataNode->selectSingleNode("inhoud")->Gettext() << endl;
 					}
-					if (dataNode->nodeName == (_bstr_t)"inhoud")
+					else if (dataNode->nodeName == (_bstr_t)"inhoud")
 					{
 						cout << endl << "inhoud:" << endl;
 						cout << dataNode->selectSingleNode("naam")->Gettext() << endl;
 						cout << dataNode->selectSingleNode("soort")->Gettext() << endl;
 						cout << dataNode->selectSingleNode("gevaar")->Gettext() << endl;
 					}
-					if (dataNode->nodeName == (_bstr_t)"ISO")
+					else if (dataNode->nodeName == (_bstr_t)"ISO")
 					{
 						cout << endl << "ISO:" << endl;
 						cout << dataNode->Gettext() << endl;
 					}
-					cout << recordNodeList->item[j]->nodeName;
+					else
+					{
+						break;
+					}
+					//add data
+
+
+
 				}
 				cout << endl;
 			}
+
 		}
+		spRoot.Release();
+	}
+	else
+	{
+		cout << "no recordset found";
+		spRoot.Release();
 	}
 
-	spRoot.Release();
 	spXMLDoc.Release();
 	CoUninitialize();
 
@@ -136,13 +150,12 @@ vector<string> XMLlezen::load_xml(string file, string name)
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	string file; //"C:/Users/Terry/Downloads/Containing XML/XML1.xml";
-	string name = "k";
-	cin >> file;
+	string file = "";
+	string name = "";
 	XMLlezen(file, name);
+
+	cin >> name;
 	return 0;
 }
 
-XMLlezen::~XMLlezen()
-{
-}
+
