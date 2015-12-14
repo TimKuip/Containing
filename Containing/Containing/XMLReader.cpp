@@ -7,8 +7,8 @@ using namespace MSXML2;
 #include <vector>
 #include <string>
 #include <iostream>
+#include "Container.h"
 using namespace std;
-
 
 
 
@@ -22,117 +22,417 @@ public:
 	{
 		load_xml(file, name);
 	}
-
 };
 
 vector<string> XMLlezen::load_xml(string file, string name)
 {
-	vector<string> app_model;
+	vector<string> xx;
 
 	CoInitialize(NULL);
 
-	string aankomstdatum;
-	string vertrekdatum;
+	string aankomstDatum;
+	string aankomstTijdVan;
+	string aankomstTijdTot;
+	string aankomstVervoer;
+	string aankomstBedrijf;
+	string x;
+	string y;
+	string z;
+	string naam;
+	string containerNr;
+	string vertrekDatum;
+	string vertrekTijdVan;
+	string vertrekTijdTot;
+	string vertrekVervoer;
+	string vertrekBedrijf;
+	string lengte;
+	string breedte;
+	string hoogte;
+	string gewichtLeeg;
+	string gewicht;
+	string inhoudNaam;
+	string inhoudSoort;
+	string gevaar;
+	string iso;
+	bool error;
 
-	//read XML
 	MSXML2::IXMLDOMDocumentPtr spXMLDoc;
+	MSXML2::IXMLDOMElementPtr spRoot;
+	MSXML2::IXMLDOMNodeListPtr recordNodeList;
+	MSXML2::IXMLDOMNodeListPtr mainNodeList;
+	MSXML2::IXMLDOMNodeListPtr dataNodeList;
+	MSXML2::IXMLDOMNodeListPtr dataNodeList2;
+	MSXML2::IXMLDOMNodePtr recordNode;
+	MSXML2::IXMLDOMNodePtr mainNode;
+	MSXML2::IXMLDOMNodePtr dataNode;
+	MSXML2::IXMLDOMNodePtr dataNode2;
+
 	spXMLDoc.CreateInstance(__uuidof(MSXML2::DOMDocument60));
 	spXMLDoc->load(file.c_str());
-	MSXML2::IXMLDOMElementPtr spRoot = spXMLDoc->documentElement; //root node
+	spRoot = spXMLDoc->documentElement;
 	if (spRoot == NULL)
 	{
 		cout << "no rootnode found";
 	}
 	else if (spRoot->nodeName == (_bstr_t)"recordset")
 	{
-		MSXML2::IXMLDOMNodeListPtr recordNodeList = spRoot->childNodes;
+		recordNodeList = spRoot->childNodes;
 		// traverse child's nodes
-		for (long i = 0; i != recordNodeList->length; ++i)
+		for (long a = 0; a != recordNodeList->length; ++a)
 		{
-			MSXML2::IXMLDOMNodePtr recordNode = recordNodeList->item[i];
+			error = false;
+			recordNode = recordNodeList->item[a];
 			if (recordNode->nodeName == (_bstr_t)"record")
 			{
-				MSXML2::IXMLDOMNodeListPtr dataNodeList = recordNode->childNodes;
-				for (long j = 0; j != dataNodeList->length; j++)
+				mainNodeList = recordNode->childNodes;
+				for (int b = 0; b != mainNodeList->length; b++)
 				{
-					MSXML2::IXMLDOMNodePtr dataNode = dataNodeList->item[j];
-					if (dataNode->nodeName == (_bstr_t)"aankomst")
-					{
-						cout << endl << "aankomst:" << endl;
-						aankomstdatum = dataNode->selectSingleNode("datum")->selectSingleNode("d")->Gettext() + "-";
-						aankomstdatum += dataNode->selectSingleNode("datum")->selectSingleNode("m")->Gettext() + "-";
-						aankomstdatum += dataNode->selectSingleNode("datum")->selectSingleNode("j")->Gettext();
-						cout << aankomstdatum << endl;
-
-						cout << dataNode->selectSingleNode("tijd")->selectSingleNode("van")->Gettext() << endl;
-						cout << dataNode->selectSingleNode("tijd")->selectSingleNode("tot")->Gettext() << endl;
-
-						cout << dataNode->selectSingleNode("soort_vervoer")->Gettext() << endl;
-
-						cout << dataNode->selectSingleNode("bedrijf")->Gettext() << endl;
-
-						cout << dataNode->selectSingleNode("positie")->selectSingleNode("x")->Gettext() << endl;
-						cout << dataNode->selectSingleNode("positie")->selectSingleNode("y")->Gettext() << endl;
-						cout << dataNode->selectSingleNode("positie")->selectSingleNode("z")->Gettext() << endl;
-					}
-					else if (dataNode->nodeName == (_bstr_t)"eigenaar")
-					{
-						cout << endl << "eigenaar:" << endl;
-						cout << dataNode->selectSingleNode("naam")->Gettext() << endl;
-						cout << dataNode->selectSingleNode("containernr")->Gettext() << endl;
-					}
-					else if (dataNode->nodeName == (_bstr_t)"vertrek")
-					{
-						cout << endl << "vertrek:" << endl;
-						vertrekdatum = dataNode->selectSingleNode("datum")->selectSingleNode("d")->Gettext() + "-";
-						vertrekdatum += dataNode->selectSingleNode("datum")->selectSingleNode("m")->Gettext() + "-";
-						vertrekdatum += dataNode->selectSingleNode("datum")->selectSingleNode("j")->Gettext();
-						cout << aankomstdatum << endl;
-
-						cout << dataNode->selectSingleNode("tijd")->selectSingleNode("van")->Gettext() << endl;
-						cout << dataNode->selectSingleNode("tijd")->selectSingleNode("tot")->Gettext() << endl;
-
-						cout << dataNode->selectSingleNode("soort_vervoer")->Gettext() << endl;
-
-						cout << dataNode->selectSingleNode("bedrijf")->Gettext() << endl;
-					}
-					else if (dataNode->nodeName == (_bstr_t)"afmetingen")
-					{
-						cout << endl << "afmetingen:" << endl;
-						cout << dataNode->selectSingleNode("l")->Gettext() << endl;
-						cout << dataNode->selectSingleNode("b")->Gettext() << endl;
-						cout << dataNode->selectSingleNode("h")->Gettext() << endl;
-					}
-					else if (dataNode->nodeName == (_bstr_t)"gewicht")
-					{
-						cout << endl << "gewicht:" << endl;
-						cout << dataNode->selectSingleNode("leeg")->Gettext() << endl;
-						cout << dataNode->selectSingleNode("inhoud")->Gettext() << endl;
-					}
-					else if (dataNode->nodeName == (_bstr_t)"inhoud")
-					{
-						cout << endl << "inhoud:" << endl;
-						cout << dataNode->selectSingleNode("naam")->Gettext() << endl;
-						cout << dataNode->selectSingleNode("soort")->Gettext() << endl;
-						cout << dataNode->selectSingleNode("gevaar")->Gettext() << endl;
-					}
-					else if (dataNode->nodeName == (_bstr_t)"ISO")
-					{
-						cout << endl << "ISO:" << endl;
-						cout << dataNode->Gettext() << endl;
-					}
-					else
+					if (error == true)
 					{
 						break;
 					}
-					//add data
+					mainNode = mainNodeList->item[b];
+					if (mainNode->nodeName == (_bstr_t)"aankomst")
+					{
+						dataNodeList = mainNode->childNodes;
+						for (int c = 0; c != dataNodeList->length; c++)
+						{
+							if (error == true)
+							{
+								break;
+							}
+							dataNode = dataNodeList->item[c];
+							if (dataNode->nodeName == (_bstr_t)"datum")
+							{
+								dataNodeList2 = dataNode->childNodes;
+								for (int d = 0; d != dataNodeList2->length; d++)
+								{
+									if (error == true)
+									{
+										break;
+									}
+									dataNode2 = dataNodeList2->item[d];
+									if (dataNode2->nodeName == (_bstr_t)"d")
+									{
+										aankomstDatum = dataNode2->Gettext() + "-";
+									}
+									else if (dataNode2->nodeName == (_bstr_t)"m")
+									{
+										aankomstDatum += dataNode2->Gettext() + "-";
+									}
+									else if (dataNode2->nodeName == (_bstr_t)"j")
+									{
+										aankomstDatum += dataNode2->Gettext();
+									}
+									else
+									{
+										error = true;
+									}
+								}
+							}
+							else if (dataNode->nodeName == (_bstr_t)"tijd")
+							{
+								dataNodeList2 = dataNode->childNodes;
+								for (int c = 0; c != dataNodeList2->length; c++)
+								{
+									if (error == true)
+									{
+										break;
+									}
+									dataNode2 = dataNodeList2->item[c];
+									if (dataNode2->nodeName == (_bstr_t)"van")
+									{
+										aankomstTijdVan = dataNode2->Gettext();
+									}
+									else if (dataNode2->nodeName == (_bstr_t)"tot")
+									{
+										aankomstTijdTot = dataNode2->Gettext();
+									}
+									else
+									{
+										error = true;
+									}
+								}
+							}
+							else if (dataNode->nodeName == (_bstr_t)"soort_vervoer")
+							{
+								aankomstVervoer = dataNode->Gettext();
+							}
+							else if (dataNode->nodeName == (_bstr_t)"bedrijf")
+							{
+								aankomstBedrijf = dataNode->Gettext();
+							}
+							else if (dataNode->nodeName == (_bstr_t)"positie")
+							{
+								dataNodeList2 = dataNode->childNodes;
+								for (int c = 0; c != dataNodeList2->length; c++)
+								{
+									if (error == true)
+									{
+										break;
+									}
+									dataNode2 = dataNodeList2->item[c];
+									if (dataNode2->nodeName == (_bstr_t)"x")
+									{
+										x = dataNode2->Gettext();
+									}
+									else if (dataNode2->nodeName == (_bstr_t)"y")
+									{
+										y = dataNode2->Gettext();
+									}
+									else if (dataNode2->nodeName == (_bstr_t)"z")
+									{
+										z = dataNode2->Gettext();
+									}
+									else
+									{
 
-
-
+										error = true;
+									}
+								}
+							}
+						}
+					}
+					else if (mainNode->nodeName == (_bstr_t)"eigenaar")
+					{
+						dataNodeList2 = mainNode->childNodes;
+						for (int c = 0; c != dataNodeList2->length; c++)
+						{
+							if (error == true)
+							{
+								break;
+							}
+							dataNode2 = dataNodeList2->item[c];
+							if (dataNode2->nodeName == (_bstr_t)"naam")
+							{
+								naam = dataNode2->Gettext();
+							}
+							else if (dataNode2->nodeName == (_bstr_t)"containernr")
+							{
+								containerNr = dataNode2->Gettext();
+							}
+							else
+							{
+								error = true;
+							}
+						}
+					}
+					else if (mainNode->nodeName == (_bstr_t)"vertrek")
+					{
+						dataNodeList = mainNode->childNodes;
+						for (int c = 0; c != dataNodeList->length; c++)
+						{
+							if (error == true)
+							{
+								break;
+							}
+							dataNode = dataNodeList->item[c];
+							if (dataNode->nodeName == (_bstr_t)"datum")
+							{
+								dataNodeList2 = dataNode->childNodes;
+								for (int d = 0; d != dataNodeList2->length; d++)
+								{
+									if (error == true)
+									{
+										break;
+									}
+									dataNode2 = dataNodeList2->item[d];
+									if (dataNode2->nodeName == (_bstr_t)"d")
+									{
+										vertrekDatum = dataNode2->Gettext() + "-";
+									}
+									else if (dataNode2->nodeName == (_bstr_t)"m")
+									{
+										vertrekDatum += dataNode2->Gettext() + "-";
+									}
+									else if (dataNode2->nodeName == (_bstr_t)"j")
+									{
+										vertrekDatum += dataNode2->Gettext();
+									}
+									else
+									{
+										error = true;
+									}
+								}
+							}
+							else if (dataNode->nodeName == (_bstr_t)"tijd")
+							{
+								dataNodeList2 = dataNode->childNodes;
+								for (int c = 0; c != dataNodeList2->length; c++)
+								{
+									if (error == true)
+									{
+										break;
+									}
+									dataNode2 = dataNodeList2->item[c];
+									if (dataNode2->nodeName == (_bstr_t)"van")
+									{
+										vertrekTijdVan = dataNode2->Gettext();
+									}
+									else if (dataNode2->nodeName == (_bstr_t)"tot")
+									{
+										vertrekTijdTot = dataNode2->Gettext();
+									}
+									else
+									{
+										error = true;
+									}
+								}
+							}
+							else if (dataNode->nodeName == (_bstr_t)"soort_vervoer")
+							{
+								vertrekVervoer = dataNode->Gettext();
+							}
+							else if (dataNode->nodeName == (_bstr_t)"bedrijf")
+							{
+								vertrekBedrijf = dataNode->Gettext();
+							}
+							else
+							{
+								error = true;
+							}
+						}
+					}
+					else if (mainNode->nodeName == (_bstr_t)"afmetingen")
+					{
+						dataNodeList = mainNode->childNodes;
+						for (int c = 0; c != dataNodeList->length; c++)
+						{
+							if (error == true)
+							{
+								break;
+							}
+							dataNode = dataNodeList->item[c];
+							if (dataNode->nodeName == (_bstr_t)"l")
+							{
+								lengte = dataNode->Gettext();
+							}
+							else if (dataNode->nodeName == (_bstr_t)"b")
+							{
+								breedte = dataNode->Gettext();
+							}
+							else if (dataNode->nodeName == (_bstr_t)"h")
+							{
+								hoogte = dataNode->Gettext();
+							}
+							else
+							{
+								error = true;
+							}
+						}
+					}
+					else if (mainNode->nodeName == (_bstr_t)"gewicht")
+					{
+						dataNodeList = mainNode->childNodes;
+						for (int c = 0; c != dataNodeList->length; c++)
+						{
+							if (error == true)
+							{
+								break;
+							}
+							dataNode = dataNodeList->item[c];
+							if (dataNode->nodeName == (_bstr_t)"leeg")
+							{
+								gewichtLeeg = dataNode->Gettext();
+							}
+							else if (dataNode->nodeName == (_bstr_t)"inhoud")
+							{
+								gewicht = dataNode->Gettext();
+							}
+							else
+							{
+								error = true;
+							}
+						}
+					}
+					else if (mainNode->nodeName == (_bstr_t)"inhoud")
+					{
+						dataNodeList = mainNode->childNodes;
+						for (int c = 0; c != dataNodeList->length; c++)
+						{
+							if (error == true)
+							{
+								break;
+							}
+							dataNode = dataNodeList->item[c];
+							if (dataNode->nodeName == (_bstr_t)"naam")
+							{
+								inhoudNaam = dataNode->Gettext();
+							}
+							else if (dataNode->nodeName == (_bstr_t)"soort")
+							{
+								inhoudSoort = dataNode->Gettext();
+							}
+							else if (dataNode->nodeName == (_bstr_t)"gevaar")
+							{
+								gevaar = dataNode->Gettext();
+							}
+							else
+							{
+								error = true;
+							}
+						}
+					}
+					else if (mainNode->nodeName == (_bstr_t)"ISO")
+					{
+						iso = mainNode->Gettext();
+					}
+					else
+					{
+						error = true;
+					}
 				}
-				cout << endl;
-			}
+				if (error == false)
+				{
+					//hier nieuwe instantie van container maken en onderstaande variabelen erin stoppen
+					
 
+
+
+
+					cout << endl << "aankomst:" << endl;
+					cout << aankomstDatum << endl;
+					cout << aankomstTijdVan << endl;
+					cout << aankomstTijdTot << endl;
+					cout << aankomstVervoer << endl;
+					cout << aankomstBedrijf << endl;
+					cout << x << endl;
+					cout << y << endl;
+					cout << z << endl;
+
+					cout << endl << "eigenaar:" << endl;
+					cout << naam << endl;
+					cout << containerNr << endl;
+
+					cout << endl << "vertrek:" << endl;
+					cout << vertrekDatum << endl;
+					cout << vertrekTijdVan << endl;
+					cout << vertrekTijdTot << endl;
+					cout << vertrekVervoer << endl;
+					cout << vertrekBedrijf << endl;
+
+					cout << endl << "afmetingen:" << endl;
+					cout << lengte << endl;
+					cout << breedte << endl;
+					cout << hoogte << endl;
+
+					cout << endl << "gewicht:" << endl;
+					cout << gewichtLeeg << endl;
+					cout << gewicht << endl;
+
+					cout << endl << "inhoud:" << endl;
+					cout << inhoudNaam << endl;
+					cout << inhoudSoort << endl;
+					cout << gevaar << endl;
+
+					cout << endl << "ISO:" << endl;
+					cout << iso << endl;
+				}
+			}
+			else
+			{
+				cout << "invalid record";
+			}
 		}
 		spRoot.Release();
 	}
@@ -145,13 +445,13 @@ vector<string> XMLlezen::load_xml(string file, string name)
 	spXMLDoc.Release();
 	CoUninitialize();
 
-	return app_model;
+	return xx;
 }
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	string file = "";
-	string name = "";
+	string file = "C:/Users/Terry/Downloads/Containing XML/xml1test.xml";
+	string name = "x";
 	XMLlezen(file, name);
 
 	cin >> name;
