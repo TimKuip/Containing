@@ -10,8 +10,6 @@
 #include <stdio.h>
 #include <tchar.h>
 #include "sockets.h"
-#include "Client.h"
-#include "Server.h"
 #include "Afstandberekenaar.h"
 #include "Voertuig.h"
 #include "Schip.h"
