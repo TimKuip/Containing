@@ -6,12 +6,9 @@
 #pragma once
 
 #include "targetver.h"
-
+#include "sockets.h"
 #include <stdio.h>
 #include <tchar.h>
-#include "sockets.h"
-#include "Client.h"
-#include "Server.h"
 #include "Afstandberekenaar.h"
 #include "Voertuig.h"
 #include "Schip.h"
@@ -24,7 +21,10 @@
 #include <string>
 #include <map>
 #include <vector>
-
+#include <thread>
+#include <algorithm>
+#include <winsock2.h>
+#include <ws2tcpip.h>
 
 
 // TODO: reference additional headers your program requires here
