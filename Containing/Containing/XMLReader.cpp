@@ -55,7 +55,6 @@ vector<string> XMLlezen::load_xml(string file, string name)
 	string gevaar;
 	string iso;
 	bool error;
-	vector<Container*>containers;
 
 	MSXML2::IXMLDOMDocumentPtr spXMLDoc;
 	MSXML2::IXMLDOMElementPtr spRoot;
@@ -385,13 +384,49 @@ vector<string> XMLlezen::load_xml(string file, string name)
 				}
 				if (error == false)
 				{
-					//data opslaan
-					Container* container = new Container(aankomstDatum, aankomstTijdVan, aankomstTijdTot, aankomstVervoer, aankomstBedrijf, x, y, z, naam, containerNr, vertrekDatum, vertrekTijdVan, vertrekTijdTot, vertrekVervoer, vertrekBedrijf, lengte, breedte, hoogte, gewichtLeeg, gewicht, inhoudNaam, inhoudSoort, gevaar, iso);
-					containers.push_back(container);
-
-					//cout << containers[a]->ContainerNr << endl;
+					//hier nieuwe instantie van container maken en onderstaande variabelen erin stoppen
+					
 
 
+
+
+					cout << endl << "aankomst:" << endl;
+					cout << aankomstDatum << endl;
+					cout << aankomstTijdVan << endl;
+					cout << aankomstTijdTot << endl;
+					cout << aankomstVervoer << endl;
+					cout << aankomstBedrijf << endl;
+					cout << x << endl;
+					cout << y << endl;
+					cout << z << endl;
+
+					cout << endl << "eigenaar:" << endl;
+					cout << naam << endl;
+					cout << containerNr << endl;
+
+					cout << endl << "vertrek:" << endl;
+					cout << vertrekDatum << endl;
+					cout << vertrekTijdVan << endl;
+					cout << vertrekTijdTot << endl;
+					cout << vertrekVervoer << endl;
+					cout << vertrekBedrijf << endl;
+
+					cout << endl << "afmetingen:" << endl;
+					cout << lengte << endl;
+					cout << breedte << endl;
+					cout << hoogte << endl;
+
+					cout << endl << "gewicht:" << endl;
+					cout << gewichtLeeg << endl;
+					cout << gewicht << endl;
+
+					cout << endl << "inhoud:" << endl;
+					cout << inhoudNaam << endl;
+					cout << inhoudSoort << endl;
+					cout << gevaar << endl;
+
+					cout << endl << "ISO:" << endl;
+					cout << iso << endl;
 				}
 			}
 			else
@@ -400,7 +435,6 @@ vector<string> XMLlezen::load_xml(string file, string name)
 			}
 		}
 		spRoot.Release();
-		cout << containers[0]->ContainerNr << endl;
 	}
 	else
 	{
@@ -416,7 +450,7 @@ vector<string> XMLlezen::load_xml(string file, string name)
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	string file = "C:/Users/Terry/Downloads/Containing XML/xml7.xml";
+	string file = "C:/Users/Terry/Downloads/Containing XML/xml1test.xml";
 	string name = "x";
 	XMLlezen(file, name);
 
