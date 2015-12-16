@@ -45,6 +45,9 @@
     <ClInclude Include="sockets.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="XMLreader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

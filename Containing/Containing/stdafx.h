@@ -6,7 +6,7 @@
 #pragma once
 
 #include "targetver.h"
-
+#include "XMLreader.h"
 #include <stdio.h>
 #include <tchar.h>
 #include "sockets.h"

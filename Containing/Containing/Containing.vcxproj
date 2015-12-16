@@ -88,6 +88,7 @@
     <ClInclude Include="Trein.h" />
     <ClInclude Include="Voertuig.h" />
     <ClInclude Include="Vrachtwagen.h" />
+    <ClInclude Include="XMLreader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Afstandberekenaar.cpp" />

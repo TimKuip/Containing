@@ -3,16 +3,18 @@
 
 #include "stdafx.h"
 #import <msxml6.dll>
-using namespace MSXML2;
+#include "XMLreader.h"
 #include <vector>
 #include <string>
 #include <iostream>
 #include "Container.h"
+using namespace MSXML2;
 using namespace std;
 
 
 
-
+//klasse staat nu in XMLreader.h, heb dit uitgecommend voor het geval dat het weer niet werkt zodat we snel kunnen oplossen
+/*
 class XMLlezen
 {
 public:
@@ -23,6 +25,11 @@ public:
 		load_xml(file, name);
 	}
 };
+*/
+XMLlezen::XMLlezen(string file, string name)
+{
+	load_xml(file, name);
+}
 
 vector<string> XMLlezen::load_xml(string file, string name)
 {
@@ -386,8 +393,8 @@ vector<string> XMLlezen::load_xml(string file, string name)
 				if (error == false)
 				{
 					//data opslaan
-					Container* container = new Container(aankomstDatum, aankomstTijdVan, aankomstTijdTot, aankomstVervoer, aankomstBedrijf, x, y, z, naam, containerNr, vertrekDatum, vertrekTijdVan, vertrekTijdTot, vertrekVervoer, vertrekBedrijf, lengte, breedte, hoogte, gewichtLeeg, gewicht, inhoudNaam, inhoudSoort, gevaar, iso);
-					containers.push_back(container);
+//					Container* container = new Container(aankomstDatum, aankomstTijdVan, aankomstTijdTot, aankomstVervoer, aankomstBedrijf, x, y, z, naam, containerNr, vertrekDatum, vertrekTijdVan, vertrekTijdTot, vertrekVervoer, vertrekBedrijf, lengte, breedte, hoogte, gewichtLeeg, gewicht, inhoudNaam, inhoudSoort, gevaar, iso);
+			//		containers.push_back(container);
 
 					//cout << containers[a]->ContainerNr << endl;
 
