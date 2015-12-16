@@ -26,12 +26,12 @@ public:
 	}
 };
 */
-XMLlezen::XMLlezen(string file, string name)
+XMLlezen::XMLlezen(string file)
 {
-	load_xml(file, name);
+	load_xml(file);
 }
 
-vector<string> XMLlezen::load_xml(string file, string name)
+vector<string> XMLlezen::load_xml(string file)
 {
 	vector<string> xx;
 
@@ -421,14 +421,6 @@ vector<string> XMLlezen::load_xml(string file, string name)
 	return xx;
 }
 
-int _tmain(int argc, _TCHAR* argv[])
-{
-	string file = "C:/Users/Terry/Downloads/Containing XML/xml7.xml";
-	string name = "x";
-	XMLlezen(file, name);
 
-	cin >> name;
-	return 0;
-}
 
 
