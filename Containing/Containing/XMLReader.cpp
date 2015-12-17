@@ -38,31 +38,32 @@ vector<string> XMLlezen::load_xml(string file)
 	CoInitialize(NULL);
 
 	string aankomstDatum;
-	string aankomstTijdVan;
-	string aankomstTijdTot;
+	double aankomstTijdVan;
+	double aankomstTijdTot;
 	string aankomstVervoer;
 	string aankomstBedrijf;
-	string x;
-	string y;
-	string z;
-	string naam;
-	string containerNr;
-	string vertrekDatum;
-	string vertrekTijdVan;
-	string vertrekTijdTot;
+	int x;
+	int y;
+	int z;
+	string eigenaar;
+	int containerNr;
+	int vertrekDatum;
+	double vertrekTijdVan;
+	double vertrekTijdTot;
 	string vertrekVervoer;
 	string vertrekBedrijf;
-	string lengte;
-	string breedte;
-	string hoogte;
-	string gewichtLeeg;
-	string gewicht;
+	double lengte;
+	double breedte;
+	double hoogte;
+	int gewichtLeeg;
+	int gewicht;
 	string inhoudNaam;
 	string inhoudSoort;
 	string gevaar;
 	string iso;
 	bool error;
 	vector<Container*>containers;
+	string waarde;
 
 	MSXML2::IXMLDOMDocumentPtr spXMLDoc;
 	MSXML2::IXMLDOMElementPtr spRoot;
@@ -150,11 +151,13 @@ vector<string> XMLlezen::load_xml(string file)
 									dataNode2 = dataNodeList2->item[c];
 									if (dataNode2->nodeName == (_bstr_t)"van")
 									{
-										aankomstTijdVan = dataNode2->Gettext();
+										waarde = dataNode2->Gettext();
+										aankomstTijdVan = stod(waarde);
 									}
 									else if (dataNode2->nodeName == (_bstr_t)"tot")
 									{
-										aankomstTijdTot = dataNode2->Gettext();
+										waarde = dataNode2->Gettext();
+										aankomstTijdTot = stod(waarde);
 									}
 									else
 									{
@@ -182,15 +185,18 @@ vector<string> XMLlezen::load_xml(string file)
 									dataNode2 = dataNodeList2->item[c];
 									if (dataNode2->nodeName == (_bstr_t)"x")
 									{
-										x = dataNode2->Gettext();
+										waarde = dataNode2->Gettext();
+										x = stoi(waarde);
 									}
 									else if (dataNode2->nodeName == (_bstr_t)"y")
 									{
-										y = dataNode2->Gettext();
+										waarde = dataNode2->Gettext();
+										y = stoi(waarde);
 									}
 									else if (dataNode2->nodeName == (_bstr_t)"z")
 									{
-										z = dataNode2->Gettext();
+										waarde = dataNode2->Gettext();
+										z = stoi(waarde);
 									}
 									else
 									{
@@ -213,11 +219,12 @@ vector<string> XMLlezen::load_xml(string file)
 							dataNode2 = dataNodeList2->item[c];
 							if (dataNode2->nodeName == (_bstr_t)"naam")
 							{
-								naam = dataNode2->Gettext();
+								eigenaar = dataNode2->Gettext();
 							}
 							else if (dataNode2->nodeName == (_bstr_t)"containernr")
 							{
-								containerNr = dataNode2->Gettext();
+								waarde = dataNode2->Gettext();
+								containerNr = stoi(waarde);
 							}
 							else
 							{
@@ -247,15 +254,18 @@ vector<string> XMLlezen::load_xml(string file)
 									dataNode2 = dataNodeList2->item[d];
 									if (dataNode2->nodeName == (_bstr_t)"d")
 									{
-										vertrekDatum = dataNode2->Gettext() + "-";
+										waarde = dataNode2->Gettext() + "-";
+										vertrekDatum = stoi(waarde);
 									}
 									else if (dataNode2->nodeName == (_bstr_t)"m")
 									{
-										vertrekDatum += dataNode2->Gettext() + "-";
+										 waarde += dataNode2->Gettext() + "-";
+										 vertrekDatum += stoi(waarde);
 									}
 									else if (dataNode2->nodeName == (_bstr_t)"j")
 									{
-										vertrekDatum += dataNode2->Gettext();
+										waarde += dataNode2->Gettext();
+										vertrekDatum += stoi(waarde);
 									}
 									else
 									{
@@ -275,11 +285,13 @@ vector<string> XMLlezen::load_xml(string file)
 									dataNode2 = dataNodeList2->item[c];
 									if (dataNode2->nodeName == (_bstr_t)"van")
 									{
-										vertrekTijdVan = dataNode2->Gettext();
+										 waarde = dataNode2->Gettext();
+										 vertrekTijdVan = stod(waarde);
 									}
 									else if (dataNode2->nodeName == (_bstr_t)"tot")
 									{
-										vertrekTijdTot = dataNode2->Gettext();
+										waarde = dataNode2->Gettext();
+										vertrekTijdTot = stod(waarde);
 									}
 									else
 									{
@@ -313,15 +325,18 @@ vector<string> XMLlezen::load_xml(string file)
 							dataNode = dataNodeList->item[c];
 							if (dataNode->nodeName == (_bstr_t)"l")
 							{
-								lengte = dataNode->Gettext();
+								waarde = dataNode->Gettext();
+								lengte = stod(waarde);
 							}
 							else if (dataNode->nodeName == (_bstr_t)"b")
 							{
-								breedte = dataNode->Gettext();
+								waarde = dataNode->Gettext();
+								breedte = stod(waarde);
 							}
 							else if (dataNode->nodeName == (_bstr_t)"h")
 							{
-								hoogte = dataNode->Gettext();
+								waarde = dataNode->Gettext();
+								hoogte = stod(waarde);
 							}
 							else
 							{
@@ -341,11 +356,13 @@ vector<string> XMLlezen::load_xml(string file)
 							dataNode = dataNodeList->item[c];
 							if (dataNode->nodeName == (_bstr_t)"leeg")
 							{
-								gewichtLeeg = dataNode->Gettext();
+								waarde = dataNode->Gettext();
+								gewichtLeeg = stoi(waarde);
 							}
 							else if (dataNode->nodeName == (_bstr_t)"inhoud")
 							{
-								gewicht = dataNode->Gettext();
+								waarde = dataNode->Gettext();
+								gewicht = stoi(waarde);
 							}
 							else
 							{
@@ -393,10 +410,11 @@ vector<string> XMLlezen::load_xml(string file)
 				if (error == false)
 				{
 					//data opslaan
-//					Container* container = new Container(aankomstDatum, aankomstTijdVan, aankomstTijdTot, aankomstVervoer, aankomstBedrijf, x, y, z, naam, containerNr, vertrekDatum, vertrekTijdVan, vertrekTijdTot, vertrekVervoer, vertrekBedrijf, lengte, breedte, hoogte, gewichtLeeg, gewicht, inhoudNaam, inhoudSoort, gevaar, iso);
-			//		containers.push_back(container);
+					Container* container = new Container(aankomstDatum, aankomstTijdVan, aankomstTijdTot, aankomstVervoer, aankomstBedrijf, x, y, z, eigenaar, containerNr, vertrekDatum, vertrekTijdVan, vertrekTijdTot, vertrekVervoer, vertrekBedrijf, lengte, breedte, hoogte, gewichtLeeg, gewicht, inhoudNaam, inhoudSoort, gevaar, iso);
+					containers.push_back(container);
+					
 
-					//cout << containers[a]->ContainerNr << endl;
+					cout << containers[a]->GetContainerNr() << endl;
 
 
 				}
@@ -407,7 +425,6 @@ vector<string> XMLlezen::load_xml(string file)
 			}
 		}
 		spRoot.Release();
-		cout << containers[0]->ContainerNr << endl;
 	}
 	else
 	{
