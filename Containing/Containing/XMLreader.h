@@ -7,5 +7,5 @@ class XMLlezen
 {
 public:
 	XMLlezen(string file);
-	vector<string>load_xml(string file);
+	void load_xml(string file);
 };
