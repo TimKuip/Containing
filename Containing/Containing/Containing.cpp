@@ -83,6 +83,8 @@ private:
 
 int main()
 {
+	XMLlezen xmllezer;
+	vector<Container> containers;
 	vector<string> filenames;
 	filenames.push_back("C:/Users/Albert/Documents/GitHub/Containing/Containing/Containing/XML/xml1.xml");
 	filenames.push_back("C:/Users/Albert/Documents/GitHub/Containing/Containing/Containing/XML/xml2.xml");
@@ -93,10 +95,10 @@ int main()
 	filenames.push_back("C:/Users/Albert/Documents/GitHub/Containing/Containing/Containing/XML/xml7.xml");
 	for(string s: filenames)
 	{
-		XMLlezen::XMLlezen(s);
+		containers = xmllezer.load_xml(s);
 	}
-
-
+	sort(containers.begin(), containers.end());
+	
 	cout << "Accepting clients ...\n";
 	initSockets();
 	ServerSocket server(50007);
@@ -108,10 +110,17 @@ int main()
 	for (;;)
 	{
 		string command = "";
-		cin >> command;
-		command.erase(remove_if(command.begin(), command.end(), isspace), command.end());
-		socket.read();
-		socket.write(command);
+		for (Container c : containers)
+		{
+			string aankomstvervoer = c.GetAankomstVervoer;
+			if (aankomstvervoer == "vrachtwagen")
+			{
+				command = "newLoadedVrachtwagenToDepot";
+			}
+			command.erase(remove_if(command.begin(), command.end(), isspace), command.end());
+			socket.read();
+			socket.write(command);
+		}
 	}
 	char ch;
 	cin >> ch;

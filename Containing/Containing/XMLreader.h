@@ -2,10 +2,11 @@
 using namespace std;
 #include <string>
 #include <vector>
+#include "Container.h"
 
 class XMLlezen
 {
 public:
-	XMLlezen(string file);
-	void load_xml(string file);
+	XMLlezen();
+	vector<Container> load_xml(string file);
 };

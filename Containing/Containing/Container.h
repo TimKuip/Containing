@@ -37,5 +37,9 @@ public:
 
 	Container(string aankomstDatum, double aankomstTijdVan, double aankomstTijdTot, string aankomstVervoer, string aankomstBedrijf, int x, int y, int z, string eigenaar, int containerNr, int vertrekDatum, double vertrekTijdVan, double vertrekTijdTot, string vertrekVervoer, string vertrekBedrijf, double lengte, double breedte, double hoogte, int gewichtLeeg, int gewicht, string inhoudNaam, string inhoudSoort, string gevaar, string iso);
 	int GetContainerNr();
+	string GetAankomstDatum();
+	double GetAankomstTijd();
+	string GetAankomstVervoer();
+	bool operator< (Container &other) const;
 	~Container();
 };

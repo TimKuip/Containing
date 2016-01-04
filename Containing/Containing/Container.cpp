@@ -53,11 +53,32 @@ Container::Container(string aankomstDatum, double aankomstTijdVan, double aankom
 	InhoudSoort = inhoudSoort;
 	Gevaar = gevaar;
 	ISO = iso;
+
+	
+}
+bool Container::operator< (Container &other) const 
+{
+	return AankomstDatum < other.GetAankomstDatum();
 }
 
 int Container::GetContainerNr()
 {
 	return ContainerNr;
+}
+
+string Container::GetAankomstDatum()
+{
+	return AankomstDatum;
+}
+
+double Container::GetAankomstTijd()
+{
+	return AankomstTijdVan;
+}
+
+string Container::GetAankomstVervoer()
+{
+	return AankomstVervoer;
 }
 
 Container::~Container()

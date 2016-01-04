@@ -1,13 +1,16 @@
 // ConsoleApplication2.cpp : Defines the entry point for the console application.
 //
 
+
 #include "stdafx.h"
 #import <msxml6.dll>
 #include "XMLreader.h"
 #include <vector>
 #include <string>
 #include <iostream>
-#include "Container.h"
+
+#include <time.h>
+
 using namespace MSXML2;
 using namespace std;
 
@@ -26,42 +29,43 @@ public:
 	}
 };
 */
-XMLlezen::XMLlezen(string file)
+XMLlezen::XMLlezen()
 {
-	load_xml(file);
+	
 }
 
-void XMLlezen::load_xml(string file)
+vector<Container> XMLlezen::load_xml(string file)
 {
+	string aankomstDatum;
+	double aankomstTijdVan;
+	double aankomstTijdTot;
+	string aankomstVervoer;
+	string aankomstBedrijf;
+	int x;
+	int y;
+	int z;
+	string eigenaar;
+	int containerNr;
+	int vertrekDatum;
+	double vertrekTijdVan;
+	double vertrekTijdTot;
+	string vertrekVervoer;
+	string vertrekBedrijf;
+	double lengte;
+	double breedte;
+	double hoogte;
+	int gewichtLeeg;
+	int gewicht;
+	string inhoudNaam;
+	string inhoudSoort;
+	string gevaar;
+	string iso;
+	bool error;
+	vector<Container>containers;
+	string waarde;
+		
 	CoInitialize(NULL);
 	{
-		string aankomstDatum;
-		double aankomstTijdVan;
-		double aankomstTijdTot;
-		string aankomstVervoer;
-		string aankomstBedrijf;
-		int x;
-		int y;
-		int z;
-		string eigenaar;
-		int containerNr;
-		int vertrekDatum;
-		double vertrekTijdVan;
-		double vertrekTijdTot;
-		string vertrekVervoer;
-		string vertrekBedrijf;
-		double lengte;
-		double breedte;
-		double hoogte;
-		int gewichtLeeg;
-		int gewicht;
-		string inhoudNaam;
-		string inhoudSoort;
-		string gevaar;
-		string iso;
-		bool error;
-		vector<Container*>containers;
-		string waarde;
 
 		MSXML2::IXMLDOMDocumentPtr spXMLDoc;
 		MSXML2::IXMLDOMElementPtr spRoot;
@@ -408,11 +412,11 @@ void XMLlezen::load_xml(string file)
 					if (error == false)
 					{
 						//data opslaan
-						Container* container = new Container(aankomstDatum, aankomstTijdVan, aankomstTijdTot, aankomstVervoer, aankomstBedrijf, x, y, z, eigenaar, containerNr, vertrekDatum, vertrekTijdVan, vertrekTijdTot, vertrekVervoer, vertrekBedrijf, lengte, breedte, hoogte, gewichtLeeg, gewicht, inhoudNaam, inhoudSoort, gevaar, iso);
+						Container container(aankomstDatum, aankomstTijdVan, aankomstTijdTot, aankomstVervoer, aankomstBedrijf, x, y, z, eigenaar, containerNr, vertrekDatum, vertrekTijdVan, vertrekTijdTot, vertrekVervoer, vertrekBedrijf, lengte, breedte, hoogte, gewichtLeeg, gewicht, inhoudNaam, inhoudSoort, gevaar, iso);
 						containers.push_back(container);
 
 
-						cout << containers[a]->GetContainerNr() << endl;
+						//cout << containers[a]->GetContainerNr() << endl;
 
 
 					}
@@ -433,6 +437,13 @@ void XMLlezen::load_xml(string file)
 		spXMLDoc.Release();
 	}
 	CoUninitialize();
+	
+	time_t rawtime;
+	struct tm timeinfo;
+	time(&rawtime);
+	localtime_s(&timeinfo, &rawtime);
+	cout << timeinfo.tm_hour << ":" << timeinfo.tm_min << ":" << timeinfo.tm_sec << endl;	
+	return containers;
 }
 
 
