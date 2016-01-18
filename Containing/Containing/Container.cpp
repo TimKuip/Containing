@@ -12,7 +12,7 @@ int Y;
 int Z;
 string Eigenaar;
 int ContainerNr;
-int VertrekDatum;
+string VertrekDatum;
 double VertrekTijdVan;
 double VertrekTijdTot;
 string VertrekVervoer;
@@ -27,7 +27,7 @@ string InhoudSoort;
 string Gevaar;
 string ISO;
 
-Container::Container(string aankomstDatum, double aankomstTijdVan, double aankomstTijdTot, string aankomstVervoer, string aankomstBedrijf, int x, int y, int z, string eigenaar, int containerNr, int vertrekDatum, double vertrekTijdVan, double vertrekTijdTot, string vertrekVervoer, string vertrekBedrijf, double lengte, double breedte, double hoogte, int gewichtLeeg, int gewicht, string inhoudNaam, string inhoudSoort, string gevaar, string iso)
+Container::Container(string aankomstDatum, double aankomstTijdVan, double aankomstTijdTot, string aankomstVervoer, string aankomstBedrijf, int x, int y, int z, string eigenaar, int containerNr, string vertrekDatum, double vertrekTijdVan, double vertrekTijdTot, string vertrekVervoer, string vertrekBedrijf, double lengte, double breedte, double hoogte, int gewichtLeeg, int gewicht, string inhoudNaam, string inhoudSoort, string gevaar, string iso)
 {
 	AankomstDatum = aankomstDatum;
 	AankomstTijdVan = aankomstTijdVan;
@@ -79,6 +79,22 @@ double Container::GetAankomstTijd()
 string Container::GetAankomstVervoer()
 {
 	return AankomstVervoer;
+}
+double Container::GetAankomstTijdTot()
+{
+	return AankomstTijdTot;
+}
+double Container::GetVertrekTijdVan()
+{
+	return VertrekTijdVan;
+}
+string Container::GetVertrekDatum()
+{
+	return VertrekDatum;
+}
+string Container::GetVertrekVervoer()
+{
+	return VertrekVervoer;
 }
 
 Container::~Container()

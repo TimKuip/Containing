@@ -1,20 +1,16 @@
-﻿Build started 16-12-2015 13:24:09.
-     1>Project "C:\Users\Albert\Documents\GitHub\Containing\Containing\Containing\Containing.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Albert\Documents\GitHub\Containing\Containing\Containing\Debug\Containing.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Albert\Documents\GitHub\Containing\Containing\Containing\Debug\Containing.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Albert\Documents\GitHub\Containing\Containing\Containing\Debug\Containing.lib" /MACHINE:X86 Debug\Afstandberekenaar.obj
-         Debug\Container.obj
-         Debug\Containing.obj
-         Debug\Schip.obj
-         Debug\sockets.obj
-         Debug\stdafx.obj
-         Debug\Trein.obj
-         Debug\Voertuig.obj
-         Debug\Vrachtwagen.obj
-         Debug\XMLreader.obj
-     1>LINK : warning LNK4067: ambiguous entry point; selected 'mainCRTStartup'
-         Containing.vcxproj -> C:\Users\Albert\Documents\GitHub\Containing\Containing\Containing\Debug\Containing.exe
-     1>Done Building Project "C:\Users\Albert\Documents\GitHub\Containing\Containing\Containing\Containing.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:03.58
+﻿  XMLreader.cpp
+c:\users\terry\documents\github\containing\containing\containing\xmlreader.cpp(55): warning C4101: 'breedte': unreferenced local variable
+c:\users\terry\documents\github\containing\containing\containing\xmlreader.cpp(46): warning C4101: 'z': unreferenced local variable
+c:\users\terry\documents\github\containing\containing\containing\xmlreader.cpp(63): warning C4101: 'error': unreferenced local variable
+c:\users\terry\documents\github\containing\containing\containing\xmlreader.cpp(54): warning C4101: 'lengte': unreferenced local variable
+c:\users\terry\documents\github\containing\containing\containing\xmlreader.cpp(40): warning C4101: 'aankomstTijdVan': unreferenced local variable
+c:\users\terry\documents\github\containing\containing\containing\xmlreader.cpp(58): warning C4101: 'gewicht': unreferenced local variable
+c:\users\terry\documents\github\containing\containing\containing\xmlreader.cpp(57): warning C4101: 'gewichtLeeg': unreferenced local variable
+c:\users\terry\documents\github\containing\containing\containing\xmlreader.cpp(45): warning C4101: 'y': unreferenced local variable
+c:\users\terry\documents\github\containing\containing\containing\xmlreader.cpp(50): warning C4101: 'vertrekTijdVan': unreferenced local variable
+c:\users\terry\documents\github\containing\containing\containing\xmlreader.cpp(44): warning C4101: 'x': unreferenced local variable
+c:\users\terry\documents\github\containing\containing\containing\xmlreader.cpp(56): warning C4101: 'hoogte': unreferenced local variable
+c:\users\terry\documents\github\containing\containing\containing\xmlreader.cpp(48): warning C4101: 'containerNr': unreferenced local variable
+c:\users\terry\documents\github\containing\containing\containing\xmlreader.cpp(51): warning C4101: 'vertrekTijdTot': unreferenced local variable
+c:\users\terry\documents\github\containing\containing\containing\xmlreader.cpp(41): warning C4101: 'aankomstTijdTot': unreferenced local variable
+  Containing.vcxproj -> C:\Users\Terry\Documents\GitHub\Containing\Containing\Containing\Debug\Containing.exe

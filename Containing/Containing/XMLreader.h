@@ -8,5 +8,5 @@ class XMLlezen
 {
 public:
 	XMLlezen();
-	vector<Container> load_xml(string file);
+	vector<Container> load_xml(vector<string> files);
 };

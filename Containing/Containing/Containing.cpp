@@ -86,18 +86,27 @@ int main()
 	XMLlezen xmllezer;
 	vector<Container> containers;
 	vector<string> filenames;
-	filenames.push_back("C:/Users/Albert/Documents/GitHub/Containing/Containing/Containing/XML/xml1.xml");
-	filenames.push_back("C:/Users/Albert/Documents/GitHub/Containing/Containing/Containing/XML/xml2.xml");
-	filenames.push_back("C:/Users/Albert/Documents/GitHub/Containing/Containing/Containing/XML/xml3.xml");
-	filenames.push_back("C:/Users/Albert/Documents/GitHub/Containing/Containing/Containing/XML/xml4.xml");
-	filenames.push_back("C:/Users/Albert/Documents/GitHub/Containing/Containing/Containing/XML/xml5.xml");
-	filenames.push_back("C:/Users/Albert/Documents/GitHub/Containing/Containing/Containing/XML/xml6.xml");
-	filenames.push_back("C:/Users/Albert/Documents/GitHub/Containing/Containing/Containing/XML/xml7.xml");
-	for(string s: filenames)
+	filenames.push_back("C:/Users/Terry/Downloads/Containing XML/xml1.xml");
+	/*filenames.push_back("C:/Users/Terry/Downloads/Containing XML/xml2.xml");
+	filenames.push_back("C:/Users/Terry/Downloads/Containing XML/xml3.xml");
+	filenames.push_back("C:/Users/Terry/Downloads/Containing XML/xml5.xml");
+	filenames.push_back("C:/Users/Terry/Downloads/Containing XML/xml6.xml");
+	filenames.push_back("C:/Users/Terry/Downloads/Containing XML/xml7.xml");*/
+
+	containers = xmllezer.load_xml(filenames);
+
+	/*for(string s: filenames)
 	{
-		containers = xmllezer.load_xml(s);
-	}
+		vector<Container> containersA = containers;
+		vector<Container> containersB = xmllezer.load_xml(s);
+		containers.empty();
+
+		containers.reserve(containersA.size() + containersB.size());
+		containers.insert(containers.end(), containersA.begin(), containersA.end());
+		containers.insert(containers.end(), containersB.begin(), containersB.end());
+	}*/
 	sort(containers.begin(), containers.end());
+	//cout << containers[0].GetContainerNr();
 	
 	cout << "Accepting clients ...\n";
 	initSockets();
@@ -107,22 +116,93 @@ int main()
 	string s = socket.read();
 	cout << s << endl;
 	//toegevoegt
-	for (;;)
+
+	if (s == "getdata") 
 	{
-		string command = "";
-		for (Container c : containers)
+		int vrachtauto = 0;
+		int zeeschip = 0;
+		int binnenschip = 0;
+		int trein = 0;
+		int opslag = 0;
+
+		//double actueleTijd = 0.00;
+		//string actueleDag = "00-00-00";
+
+		for (Container container : containers)
 		{
-			string aankomstvervoer = c.GetAankomstVervoer;
-			if (aankomstvervoer == "vrachtwagen")
+			if (/*actueleTijd < container.GetAankomstTijdTot() && actueleDag <= container.GetAankomstDatum() && */container.GetAankomstVervoer() == "vrachtauto")
 			{
-				command = "newLoadedVrachtwagenToDepot";
+				vrachtauto++;
 			}
-			command.erase(remove_if(command.begin(), command.end(), isspace), command.end());
-			socket.read();
-			socket.write(command);
+			/*else if (actueleTijd > container.GetVertrekTijdVan() && actueleDag >= container.GetVertrekDatum() && container.GetVertrekVervoer() == "vrachtauto")
+			{
+				vrachtauto++;
+			}*/
+			else if (/*actueleTijd < container.GetAankomstTijdTot() && actueleDag <= container.GetAankomstDatum() &&*/ container.GetAankomstVervoer() == "trein")
+			{
+				trein++;
+			}
+			/*else if (actueleTijd > container.GetVertrekTijdVan() && actueleDag >= container.GetVertrekDatum() && container.GetVertrekVervoer() == "trein")
+			{
+				trein++;
+			}*/
+			else if (/*actueleTijd < container.GetAankomstTijdTot() && actueleDag <= container.GetAankomstDatum() &&*/ container.GetAankomstVervoer() == "zeeschip")
+			{
+				zeeschip++;
+			}
+			/*else if (actueleTijd > container.GetVertrekTijdVan() && actueleDag >= container.GetVertrekDatum() && container.GetVertrekVervoer() == "zeeschip")
+			{
+				zeeschip++;
+			}*/
+			else if (/*actueleTijd < container.GetAankomstTijdTot() && actueleDag <= container.GetAankomstDatum() &&*/ container.GetAankomstVervoer() == "binnenschip")
+			{
+				binnenschip++;
+			}
+			/*else if (actueleTijd > container.GetVertrekTijdVan() && actueleDag >= container.GetVertrekDatum() && container.GetVertrekVervoer() == "binnenschip")
+			{
+				binnenschip++;
+			}*/
+			else
+			{
+				opslag++;
+			}
+		}
+		socket.write(to_string(vrachtauto));
+		cout << vrachtauto << endl;
+		socket.read();
+		socket.write(to_string(zeeschip));
+		cout << zeeschip << endl;
+		socket.read();
+		socket.write(to_string(trein));
+		cout << trein << endl;
+		socket.read();
+		socket.write(to_string(binnenschip));
+		cout << binnenschip << endl;
+		socket.read();
+		socket.write(to_string(opslag));
+		cout << opslag << endl;
+	}
+	else
+	{
+		for (;;)
+		{
+			string command = "";
+			for (Container c : containers)
+			{
+				string aankomstvervoer = c.GetAankomstVervoer();
+				if (aankomstvervoer == "vrachtwagen")
+				{
+					command = "newLoadedVrachtwagenToDepot";
+				}
+				command.erase(remove_if(command.begin(), command.end(), isspace), command.end());
+				socket.read();
+				socket.write(command);
+			}
 		}
 	}
+
 	char ch;
 	cin >> ch;
 	exitSockets();
+	///
 }
