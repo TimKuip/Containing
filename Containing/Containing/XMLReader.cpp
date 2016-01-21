@@ -36,36 +36,37 @@ XMLlezen::XMLlezen()
 
 vector<Container> XMLlezen::load_xml(vector<string> files)
 {
-	string aankomstDatum;
-	double aankomstTijdVan;
-	double aankomstTijdTot;
-	string aankomstVervoer;
-	string aankomstBedrijf;
-	int x;
-	int y;
-	int z;
-	string eigenaar;
-	int containerNr;
-	string vertrekDatum;
-	double vertrekTijdVan;
-	double vertrekTijdTot;
-	string vertrekVervoer;
-	string vertrekBedrijf;
-	double lengte;
-	double breedte;
-	double hoogte;
-	int gewichtLeeg;
-	int gewicht;
-	string inhoudNaam;
-	string inhoudSoort;
-	string gevaar;
-	string iso;
+	string aankomstDatum = "";
+	double aankomstTijdVan = 0;
+	double aankomstTijdTot = 0;
+	string aankomstVervoer = "";
+	string aankomstBedrijf = "";
+	int x = 0;
+	int y = 0;
+	int z = 0;
+	string eigenaar = "";
+	int containerNr = 0;
+	string vertrekDatum = "";
+	double vertrekTijdVan = 0;
+	double vertrekTijdTot = 0;
+	string vertrekVervoer = "";
+	string vertrekBedrijf = "";
+	double lengte = 0;
+	double breedte = 0;
+	double hoogte = 0;
+	int gewichtLeeg = 0;
+	int gewicht = 0;
+	string inhoudNaam = "";
+	string inhoudSoort = "";
+	string gevaar = "";
+	string iso = "";
 	bool error;
 	vector<Container>containers;
 	string waarde;
 
-	/*for (string file : files)
+	for (string file : files)
 	{
+		int containersSize = containers.size();
 		CoInitialize(NULL);
 		{
 
@@ -90,8 +91,9 @@ vector<Container> XMLlezen::load_xml(vector<string> files)
 			else if (spRoot->nodeName == (_bstr_t)"recordset")
 			{
 				recordNodeList = spRoot->childNodes;
+				int listLength = recordNodeList->length;
 				// traverse child's nodes
-				for (long a = 0; a != recordNodeList->length; ++a)
+				for (int a = 0; a < recordNodeList->length; a++)
 				{
 					error = false;
 					recordNode = recordNodeList->item[a];
@@ -411,10 +413,33 @@ vector<Container> XMLlezen::load_xml(vector<string> files)
 						if (error == false)
 						{
 							//data opslaan
-							Container container = Container(aankomstDatum, aankomstTijdVan, aankomstTijdTot, aankomstVervoer, aankomstBedrijf, x, y, z, eigenaar, containerNr, vertrekDatum, vertrekTijdVan, vertrekTijdTot, vertrekVervoer, vertrekBedrijf, lengte, breedte, hoogte, gewichtLeeg, gewicht, inhoudNaam, inhoudSoort, gevaar, iso);
+							int index = a + containersSize;
+							Container container;
 							containers.push_back(container);
-							cout << containers[0].GetContainerNr() << endl;
-							cout << containers[a].GetContainerNr() << endl;
+							containers[index].SetAankomstDatum(aankomstDatum);
+							containers[index].SetAankomstTijdVan(aankomstTijdVan);
+							containers[index].SetAankomstTijdTot(aankomstTijdTot);
+							containers[index].SetAankomstVervoer(aankomstVervoer);
+							containers[index].SetAankomstBedrijf(aankomstBedrijf);
+							containers[index].SetX(x);
+							containers[index].SetY(y);
+							containers[index].SetZ(z);
+							containers[index].SetEigenaar(eigenaar);
+							containers[index].SetContainerNr(containerNr);
+							containers[index].SetVertrekDatum(vertrekDatum);
+							containers[index].SetVertrekTijdVan(vertrekTijdVan);
+							containers[index].SetVertrekTijdTot(vertrekTijdTot);
+							containers[index].SetVertrekVervoer(vertrekVervoer);
+							containers[index].SetVertrekBedrijf(vertrekBedrijf);
+							containers[index].SetLengte(lengte);
+							containers[index].SetBreedte(breedte);
+							containers[index].SetHoogte(hoogte);
+							containers[index].SetGewichtLeeg(gewichtLeeg);
+							containers[index].SetGewicht(gewicht);
+							containers[index].SetInhoudNaam(inhoudNaam);
+							containers[index].SetInhoudSoort(inhoudSoort);
+							containers[index].SetGevaar(gevaar);
+							containers[index].SetIso(iso);
 						}
 					}
 					else
@@ -434,17 +459,7 @@ vector<Container> XMLlezen::load_xml(vector<string> files)
 			spXMLDoc.Release();
 		}
 		CoUninitialize();
-	}*/
-	
-	Container container = Container("aankomstDatum", 1, 1, "aankomstVervoer", "aankomstBedrijf", 1, 1, 1, "eigenaar", 1, "vertrekDatum", 1, 1, "vertrekVervoer", "vertrekBedrijf", 1, 1, 1, 1, 1, "inhoudNaam", "inhoudSoort", "gevaar", "iso");
-	containers.push_back(container);
-	//containers.insert(containers.end(), container);
-	container = Container("aankomstDatum2", 2, 2, "aankomstVervoer2", "aankomstBedrijf2", 2, 2, 2, "eigenaar2", 2, "vertrekDatum2", 2, 2, "vertrekVervoer2", "vertrekBedrijf2", 2, 2, 2, 2, 2, "inhoudNaam2", "inhoudSoort2", "gevaar2", "iso2");
-	containers.push_back(container);
-	//containers.insert(containers.end(), container);
-
-	cout << containers[0].GetContainerNr() << endl;
-	cout << containers[1].GetContainerNr() << endl;
+	}
 
 	time_t rawtime;
 	struct tm timeinfo;

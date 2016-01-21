@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Container.h"
 
-//Verder geen functies? Word puur verplaatst door voortuigen?
 string AankomstDatum;
 double AankomstTijdVan;
 double AankomstTijdTot;
@@ -11,7 +10,7 @@ int X;
 int Y;
 int Z;
 string Eigenaar;
-int ContainerNr;
+int containerNr;
 string VertrekDatum;
 double VertrekTijdVan;
 double VertrekTijdTot;
@@ -27,35 +26,132 @@ string InhoudSoort;
 string Gevaar;
 string ISO;
 
-Container::Container(string aankomstDatum, double aankomstTijdVan, double aankomstTijdTot, string aankomstVervoer, string aankomstBedrijf, int x, int y, int z, string eigenaar, int containerNr, string vertrekDatum, double vertrekTijdVan, double vertrekTijdTot, string vertrekVervoer, string vertrekBedrijf, double lengte, double breedte, double hoogte, int gewichtLeeg, int gewicht, string inhoudNaam, string inhoudSoort, string gevaar, string iso)
+Container::Container() 
 {
-	AankomstDatum = aankomstDatum;
-	AankomstTijdVan = aankomstTijdVan;
-	AankomstTijdTot = aankomstTijdTot;
-	AankomstVervoer = aankomstVervoer;
-	AankomstBedrijf = aankomstBedrijf;
-	X = x;
-	Y = y;
-	Z = z;
-	Eigenaar = eigenaar;
-	ContainerNr = containerNr;
-	VertrekDatum = vertrekDatum;
-	VertrekTijdVan = vertrekTijdVan;
-	VertrekTijdTot = vertrekTijdTot;
-	VertrekVervoer = vertrekVervoer;
-	VertrekBedrijf = vertrekBedrijf;
-	Lengte = lengte;
-	Breedte = breedte;
-	Hoogte = hoogte;
-	GewichtLeeg = gewichtLeeg;
-	Gewicht = gewicht;
-	InhoudNaam = inhoudNaam;
-	InhoudSoort = inhoudSoort;
-	Gevaar = gevaar;
-	ISO = iso;
 
-	
 }
+
+void Container::SetContainerNr(int containernr)
+{
+	containerNr = containernr;
+}
+
+void Container::SetVertrekDatum(string vertrekdatum)
+{
+	VertrekDatum = vertrekdatum;
+}
+
+void Container::SetVertrekTijdVan(double vertrektijdvan)
+{
+	VertrekTijdVan = vertrektijdvan;
+}
+
+void Container::SetVertrekTijdTot(double vertrektijdtot)
+{
+	VertrekTijdTot = vertrektijdtot;
+}
+
+void Container::SetVertrekVervoer(string vertrekvervoer)
+{
+	VertrekVervoer = vertrekvervoer;
+}
+
+void Container::SetVertrekBedrijf(string vertrekbedrijf)
+{
+	VertrekBedrijf = vertrekbedrijf;
+}
+
+void Container::SetLengte(double lengte)
+{
+	Lengte = lengte;
+}
+
+void Container::SetBreedte(double breedte)
+{
+	Breedte = breedte;
+}
+
+void Container::SetHoogte(double hoogte)
+{
+	Hoogte = hoogte;
+}
+
+void Container::SetGewichtLeeg(int gewichtleeg)
+{
+	GewichtLeeg = gewichtleeg;
+}
+
+void Container::SetGewicht(int gewicht)
+{
+	Gewicht = gewicht;
+}
+
+void Container::SetInhoudNaam(string inhoudnaam)
+{
+	InhoudNaam = inhoudnaam;
+}
+
+void Container::SetInhoudSoort(string inhoudsoort)
+{
+	InhoudSoort = inhoudsoort;
+}
+
+void Container::SetGevaar(string gevaar)
+{
+	Gevaar = gevaar;
+}
+
+void Container::SetIso(string iso)
+{
+	ISO = iso;
+}
+
+void Container::SetAankomstDatum(string aankomstdatum)
+{
+	AankomstDatum = aankomstdatum;
+}
+
+void Container::SetAankomstTijdVan(double aankomsttijdvan)
+{
+	AankomstTijdVan = aankomsttijdvan;
+}
+
+void Container::SetAankomstTijdTot(double aankomsttijdtot)
+{
+	AankomstTijdTot = aankomsttijdtot;
+}
+
+void Container::SetAankomstVervoer(string aankomstvervoer)
+{
+	AankomstVervoer = aankomstvervoer;
+}
+
+void Container::SetAankomstBedrijf(string aankomstbedrijf)
+{
+	AankomstBedrijf = aankomstbedrijf;
+}
+
+void Container::SetX(int x)
+{
+	X = x;
+}
+
+void Container::SetY(int y)
+{
+	Y = y;
+}
+
+void Container::SetZ(int z)
+{
+	Z = z;
+}
+
+void Container::SetEigenaar(string eigenaar)
+{
+	Eigenaar = eigenaar;
+}
+
+
 bool Container::operator< (Container &other) const 
 {
 	return AankomstDatum < other.GetAankomstDatum();
@@ -63,7 +159,12 @@ bool Container::operator< (Container &other) const
 
 int Container::GetContainerNr()
 {
-	return ContainerNr;
+	return containerNr;
+}
+
+int Container::GetGewicht()
+{
+	return Gewicht;
 }
 
 string Container::GetAankomstDatum()
