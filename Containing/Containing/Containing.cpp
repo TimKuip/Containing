@@ -88,10 +88,10 @@ int main()
 	
 	//in te lezen bestanden in een array zetten
 	vector<string> filenames;
-	filenames.push_back("C:/Users/Terry/Downloads/Containing XML/xml1.xml");
-	filenames.push_back("C:/Users/Terry/Downloads/Containing XML/xml2.xml");
-	filenames.push_back("C:/Users/Terry/Downloads/Containing XML/xml3.xml");
-	filenames.push_back("C:/Users/Terry/Downloads/Containing XML/xml4.xml");
+	filenames.push_back("C:/Users/Albert/Documents/GitHub/Containing/Containing/Containing/XML/xml1.xml");
+	//filenames.push_back("C:/Users/Albert/Documents/GitHub/Containing/Containing/Containing/XML/xml2.xml");
+	//filenames.push_back("C:/Users/Albert/Documents/GitHub/Containing/Containing/Containing/XML/xml3.xml");
+	//filenames.push_back("C:/Users/Albert/Documents/GitHub/Containing/Containing/Containing/XML/xml4.xml");
 	/*filenames.push_back("C:/Users/Terry/Downloads/Containing XML/xml5.xml");
 	filenames.push_back("C:/Users/Terry/Downloads/Containing XML/xml6.xml");
 	filenames.push_back("C:/Users/Terry/Downloads/Containing XML/xml7.xml");*/
@@ -182,21 +182,22 @@ int main()
 		}
 		else if (s == "simulatie")
 		{
-			for (;;)
-			{
-				string command = "";
+							
 				for (Container c : containers)
 				{
+					string command = "";
 					string aankomstvervoer = c.GetAankomstVervoer();
-					if (aankomstvervoer == "vrachtwagen")
+					if (aankomstvervoer == "vrachtauto")
 					{
-						command = "newLoadedVrachtwagenToDepot";
+						command = "VrachtautoToDepotLoaded";
+						cout << "nieuwe vrachtauto" << endl;
 					}
 					command.erase(remove_if(command.begin(), command.end(), isspace), command.end());
-					socket.read();
+					cout << socket.read() << endl;
 					socket.write(command);
+					
 				}
-			}
+			
 		}
 	}
 
