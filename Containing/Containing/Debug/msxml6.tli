@@ -1,9 +1,9 @@
-﻿// Created by Microsoft (R) C/C++ Compiler Version 14.00.23026.0 (97db9d35).
+﻿// Created by Microsoft (R) C/C++ Compiler Version 14.00.23506.0 (0d72019d).
 //
-// c:\users\albert\documents\github\containing\containing\containing\debug\msxml6.tli
+// c:\users\terry\documents\github\containing\containing\containing\debug\msxml6.tli
 //
 // Wrapper implementations for Win32 type library msxml6.dll
-// compiler-generated file created 01/28/16 at 12:41:12 - DO NOT EDIT!
+// compiler-generated file created 01/29/16 at 12:03:11 - DO NOT EDIT!
 
 #pragma once
 

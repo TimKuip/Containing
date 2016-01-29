@@ -108,6 +108,47 @@ int main()
 
 	//double actueleTijd = 0.00;
 	//string actueleDag = "00-00-00";
+	
+	//containers tellen op verschillende plaatsen
+	for (Container container : containers)
+	{
+		if (/*actueleTijd < container.GetAankomstTijdTot() && actueleDag <= container.GetAankomstDatum() && */container.GetAankomstVervoer() == "vrachtauto")
+		{
+			vrachtauto++;
+		}
+		/*else if (actueleTijd > container.GetVertrekTijdVan() && actueleDag >= container.GetVertrekDatum() && container.GetVertrekVervoer() == "vrachtauto")
+		{
+		vrachtauto++;
+		}*/
+		else if (/*actueleTijd < container.GetAankomstTijdTot() && actueleDag <= container.GetAankomstDatum() &&*/ container.GetAankomstVervoer() == "trein")
+		{
+			trein++;
+		}
+		/*else if (actueleTijd > container.GetVertrekTijdVan() && actueleDag >= container.GetVertrekDatum() && container.GetVertrekVervoer() == "trein")
+		{
+		trein++;
+		}*/
+		else if (/*actueleTijd < container.GetAankomstTijdTot() && actueleDag <= container.GetAankomstDatum() &&*/ container.GetAankomstVervoer() == "zeeschip")
+		{
+			zeeschip++;
+		}
+		/*else if (actueleTijd > container.GetVertrekTijdVan() && actueleDag >= container.GetVertrekDatum() && container.GetVertrekVervoer() == "zeeschip")
+		{
+		zeeschip++;
+		}*/
+		else if (/*actueleTijd < container.GetAankomstTijdTot() && actueleDag <= container.GetAankomstDatum() &&*/ container.GetAankomstVervoer() == "binnenschip")
+		{
+			binnenschip++;
+		}
+		/*else if (actueleTijd > container.GetVertrekTijdVan() && actueleDag >= container.GetVertrekDatum() && container.GetVertrekVervoer() == "binnenschip")
+		{
+		binnenschip++;
+		}*/
+		else
+		{
+			opslag++;
+		}
+	}
 
 	cout << "Accepting clients ...\n";
 	initSockets();
@@ -124,47 +165,6 @@ int main()
 		//aantallen containers naar app sturen
 		if (s == "getdata")
 		{
-			//containers tellen op verschillende plaatsen
-			for (Container container : containers)
-			{
-				if (/*actueleTijd < container.GetAankomstTijdTot() && actueleDag <= container.GetAankomstDatum() && */container.GetAankomstVervoer() == "vrachtauto")
-				{
-					vrachtauto++;
-				}
-				/*else if (actueleTijd > container.GetVertrekTijdVan() && actueleDag >= container.GetVertrekDatum() && container.GetVertrekVervoer() == "vrachtauto")
-				{
-				vrachtauto++;
-				}*/
-				else if (/*actueleTijd < container.GetAankomstTijdTot() && actueleDag <= container.GetAankomstDatum() &&*/ container.GetAankomstVervoer() == "trein")
-				{
-					trein++;
-				}
-				/*else if (actueleTijd > container.GetVertrekTijdVan() && actueleDag >= container.GetVertrekDatum() && container.GetVertrekVervoer() == "trein")
-				{
-				trein++;
-				}*/
-				else if (/*actueleTijd < container.GetAankomstTijdTot() && actueleDag <= container.GetAankomstDatum() &&*/ container.GetAankomstVervoer() == "zeeschip")
-				{
-					zeeschip++;
-				}
-				/*else if (actueleTijd > container.GetVertrekTijdVan() && actueleDag >= container.GetVertrekDatum() && container.GetVertrekVervoer() == "zeeschip")
-				{
-				zeeschip++;
-				}*/
-				else if (/*actueleTijd < container.GetAankomstTijdTot() && actueleDag <= container.GetAankomstDatum() &&*/ container.GetAankomstVervoer() == "binnenschip")
-				{
-					binnenschip++;
-				}
-				/*else if (actueleTijd > container.GetVertrekTijdVan() && actueleDag >= container.GetVertrekDatum() && container.GetVertrekVervoer() == "binnenschip")
-				{
-				binnenschip++;
-				}*/
-				else
-				{
-					opslag++;
-				}
-			}
-
 			socket.write(to_string(vrachtauto));
 			cout << vrachtauto << endl;
 			socket.read();
@@ -195,7 +195,8 @@ int main()
 					command.erase(remove_if(command.begin(), command.end(), isspace), command.end());
 					cout << socket.read() << endl;
 					socket.write(command);
-					
+					vrachtauto -= 1;
+					opslag += 1;					
 				}
 			
 		}
@@ -205,3 +206,4 @@ int main()
 	cin >> ch;
 	exitSockets();
 }
+
