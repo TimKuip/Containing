@@ -1,9 +1,9 @@
-﻿// Created by Microsoft (R) C/C++ Compiler Version 14.00.23506.0 (0d72019d).
+﻿// Created by Microsoft (R) C/C++ Compiler Version 14.00.23026.0 (97db9d35).
 //
-// c:\users\terry\documents\github\containing\containing\containing\debug\msxml6.tlh
+// c:\users\albert\documents\github\containing\containing\containing\debug\msxml6.tlh
 //
 // C++ source equivalent of Win32 type library msxml6.dll
-// compiler-generated file created 01/29/16 at 12:03:11 - DO NOT EDIT!
+// compiler-generated file created 01/29/16 at 12:19:52 - DO NOT EDIT!
 
 #pragma once
 #pragma pack(push, 8)
@@ -1751,7 +1751,8 @@ enum _XHR_PROPERTY
     XHR_PROP_NO_CACHE = 5,
     XHR_PROP_EXTENDED_ERROR = 6,
     XHR_PROP_QUERY_STRING_UTF8 = 7,
-    XHR_PROP_IGNORE_CERT_ERRORS = 8
+    XHR_PROP_IGNORE_CERT_ERRORS = 8,
+    XHR_PROP_ONDATA_THRESHOLD = 9
 };
 
 struct __declspec(uuid("88d96a0b-f192-11d4-a65f-0040963251e5"))
@@ -4509,7 +4510,7 @@ IXMLHTTPRequest2Callback : IUnknown
 // Wrapper method implementations
 //
 
-#include "c:\users\terry\documents\github\containing\containing\containing\debug\msxml6.tli"
+#include "c:\users\albert\documents\github\containing\containing\containing\debug\msxml6.tli"
 
 } // namespace MSXML2
 

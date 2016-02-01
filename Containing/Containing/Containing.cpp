@@ -88,13 +88,13 @@ int main()
 	
 	//in te lezen bestanden in een array zetten
 	vector<string> filenames;
-	filenames.push_back("C:/Users/Albert/Documents/GitHub/Containing/Containing/Containing/XML/xml1.xml");
+	//filenames.push_back("C:/Users/Albert/Documents/GitHub/Containing/Containing/Containing/XML/xml1.xml");
 	//filenames.push_back("C:/Users/Albert/Documents/GitHub/Containing/Containing/Containing/XML/xml2.xml");
 	//filenames.push_back("C:/Users/Albert/Documents/GitHub/Containing/Containing/Containing/XML/xml3.xml");
 	//filenames.push_back("C:/Users/Albert/Documents/GitHub/Containing/Containing/Containing/XML/xml4.xml");
-	/*filenames.push_back("C:/Users/Terry/Downloads/Containing XML/xml5.xml");
-	filenames.push_back("C:/Users/Terry/Downloads/Containing XML/xml6.xml");
-	filenames.push_back("C:/Users/Terry/Downloads/Containing XML/xml7.xml");*/
+	filenames.push_back("C:/Users/Albert/Documents/GitHub/Containing/Containing/Containing/XML/xml5.xml");
+	//filenames.push_back("C:/Users/Terry/Downloads/Containing XML/xml6.xml");
+	//filenames.push_back("C:/Users/Terry/Downloads/Containing XML/xml7.xml");*/
 
 	//XML lezen
 	containers = xmllezer.load_xml(filenames);
@@ -191,12 +191,12 @@ int main()
 					{
 						command = "VrachtautoToDepotLoaded";
 						cout << "nieuwe vrachtauto" << endl;
+						vrachtauto -= 1;
+						opslag += 1;
 					}
 					command.erase(remove_if(command.begin(), command.end(), isspace), command.end());
 					cout << socket.read() << endl;
-					socket.write(command);
-					vrachtauto -= 1;
-					opslag += 1;					
+					socket.write(command);			
 				}
 			
 		}
